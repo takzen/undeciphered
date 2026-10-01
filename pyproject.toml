@@ -1,0 +1,32 @@
+[project]
+name = "undeciphered-scripts"
+version = "0.1.0"
+description = "Reproducible, skeptical computational studies of undeciphered writing systems: replications and null tests of AI decipherment claims."
+readme = "README.md"
+license = "MIT"
+requires-python = ">=3.11"
+dependencies = [
+    "numpy>=2.4",
+    "pandas>=3.0",
+    "scipy>=1.17",
+    "scikit-learn>=1.9",
+    "umap-learn>=0.5.12",
+    "hdbscan>=0.8.44",
+    "xgboost>=3.2",
+    "matplotlib>=3.9",
+]
+
+[dependency-groups]
+dev = ["ruff>=0.6"]
+
+[tool.uv]
+package = false
+
+[tool.ruff]
+line-length = 132
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "B", "UP"]
+# analysis scripts import heavy libraries late, define tiny lambdas, and compact plotting lines
+ignore = ["E402", "E731", "E702"]

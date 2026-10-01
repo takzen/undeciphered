@@ -12,7 +12,7 @@ Steps
      blank / coded "unknown") - variables that say nothing about the object itself.
   4. Ask how well completeness alone predicts the clusters and the provenance labels.
 
-Run:  ./scripts/fetch_okr.sh && python studies/khipu/01-khipu-ml-transcription-confound/replicate.py
+Run:  uv sync && ./scripts/fetch_okr.sh && uv run python studies/khipu/01-khipu-ml-transcription-confound/replicate.py
 """
 import json
 import sqlite3
@@ -94,8 +94,8 @@ assert len(FEATURES) == 27, len(FEATURES)
 # --------------------------------------------------------------------------------------
 # 2. UMAP + HDBSCAN with the published hyperparameters
 # --------------------------------------------------------------------------------------
-from umap import UMAP  # noqa: E402  (slow import)
 import hdbscan  # noqa: E402
+from umap import UMAP  # noqa: E402  (slow import)
 
 X = StandardScaler().fit_transform(fm[FEATURES])
 
@@ -236,6 +236,7 @@ summary = {
 fm[["KHIPU_ID", "REGION", "MUSEUM_NAME", "cluster"] + COMPLETENESS].to_csv(OUT / "khipu_clusters_completeness.csv", index=False)
 
 import matplotlib  # noqa: E402
+
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt  # noqa: E402
 

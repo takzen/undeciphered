@@ -1,4 +1,4 @@
-# undeciphered
+# undeciphered-scripts
 
 **Reproducible, skeptical computational studies of the world's undeciphered writing systems.**
 
@@ -52,12 +52,15 @@ studies/<script>/NN-<slug>/
 
 ## Run
 
+Requires [uv](https://docs.astral.sh/uv/).
+
 ```bash
-python -m venv .venv && source .venv/bin/activate
-pip install -r requirements.txt
+uv sync
 ./scripts/fetch_okr.sh
-python studies/khipu/01-khipu-ml-transcription-confound/replicate.py
+uv run python studies/khipu/01-khipu-ml-transcription-confound/replicate.py
 ```
+
+Contributor and AI-agent conventions are in [AGENTS.md](AGENTS.md).
 
 ## Contributing
 

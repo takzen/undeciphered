@@ -91,9 +91,9 @@ What stands: the paper's own negative result (knot-type n-grams add no provenanc
 ## Reproduce
 
 ```bash
-pip install -r requirements.txt
+uv sync
 ./scripts/fetch_okr.sh
-python studies/khipu/01-khipu-ml-transcription-confound/replicate.py   # ~1 min
+uv run python studies/khipu/01-khipu-ml-transcription-confound/replicate.py   # ~1 min
 ```
 
 Outputs are written to `results/`: `summary.json`, `cluster_profile.csv`, `late_horizon_vs_dallas.csv`, `seed_robustness.csv`, `khipu_clusters_completeness.csv`, and the figure.

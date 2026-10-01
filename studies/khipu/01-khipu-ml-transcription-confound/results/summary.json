@@ -1,0 +1,120 @@
+{
+  "okr_commit": "4039ca51f4de661d80d0160596309c983a62a9c7",
+  "n_khipus": 619,
+  "n_features": 27,
+  "clusters_seed42": {
+    "0": 17,
+    "1": 159,
+    "2": 443
+  },
+  "silhouette_seed42": 0.788,
+  "cluster_from_completeness_only": {
+    "decision_tree_depth3_cv_accuracy": 0.914,
+    "majority_class_baseline": 0.716
+  },
+  "smallest_cluster_the_imperial_one": {
+    "n_khipus": 17,
+    "museums": {
+      "Dallas Museum of Art": 14,
+      "(blank)": 2,
+      "\"Museum für Völkerkunde, Berlin\"": 1
+    },
+    "khipus_with_zero_cords_in_db": 7,
+    "khipus_with_zero_knots_in_db": 14,
+    "cords_with_S_twist_recorded": 0,
+    "cords_with_Z_twist_recorded": 0
+  },
+  "late_horizon_vs_dallas": {
+    "late_horizon_khipus": 18,
+    "dallas_khipus": 18,
+    "overlap": 18
+  },
+  "provenance_classifier_5fold": {
+    "paper_27_structural_features": {
+      "f1_weighted": 0.473,
+      "f1_late_horizon": 0.857
+    },
+    "completeness_only_7_features": {
+      "f1_weighted": 0.393,
+      "f1_late_horizon": 0.875
+    },
+    "single_feature_has_knots": {
+      "f1_weighted": 0.188,
+      "f1_late_horizon": 0.833
+    },
+    "late_horizon_khipus_with_zero_knots_in_db": 15,
+    "late_horizon_label_equals_dallas": true
+  },
+  "seed_robustness": [
+    {
+      "seed": 0,
+      "n_clusters": 3,
+      "noise": 0,
+      "tree_accuracy_completeness_only": 0.913,
+      "majority_baseline": 0.716
+    },
+    {
+      "seed": 1,
+      "n_clusters": 3,
+      "noise": 0,
+      "tree_accuracy_completeness_only": 0.913,
+      "majority_baseline": 0.716
+    },
+    {
+      "seed": 2,
+      "n_clusters": 3,
+      "noise": 0,
+      "tree_accuracy_completeness_only": 0.918,
+      "majority_baseline": 0.712
+    },
+    {
+      "seed": 3,
+      "n_clusters": 3,
+      "noise": 0,
+      "tree_accuracy_completeness_only": 0.911,
+      "majority_baseline": 0.714
+    },
+    {
+      "seed": 4,
+      "n_clusters": 3,
+      "noise": 0,
+      "tree_accuracy_completeness_only": 0.913,
+      "majority_baseline": 0.716
+    },
+    {
+      "seed": 5,
+      "n_clusters": 3,
+      "noise": 0,
+      "tree_accuracy_completeness_only": 0.918,
+      "majority_baseline": 0.712
+    },
+    {
+      "seed": 6,
+      "n_clusters": 3,
+      "noise": 0,
+      "tree_accuracy_completeness_only": 0.911,
+      "majority_baseline": 0.714
+    },
+    {
+      "seed": 7,
+      "n_clusters": 3,
+      "noise": 0,
+      "tree_accuracy_completeness_only": 0.918,
+      "majority_baseline": 0.712
+    },
+    {
+      "seed": 8,
+      "n_clusters": 3,
+      "noise": 0,
+      "tree_accuracy_completeness_only": 0.918,
+      "majority_baseline": 0.716
+    },
+    {
+      "seed": 9,
+      "n_clusters": 3,
+      "noise": 0,
+      "tree_accuracy_completeness_only": 0.911,
+      "majority_baseline": 0.714
+    }
+  ]
+}

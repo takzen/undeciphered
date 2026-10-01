@@ -1,0 +1,4 @@
+cluster,n_khipus,has_cords,has_knots,twist_blank,twist_coded_U,length_missing,knot_dir_coded_U,knot_turns_missing,ratio_SZ,twist_S,twist_Z,n_knots
+0,17,0.588,0.176,0.824,0.176,0.824,1.0,0.984,0.0,0.0,0.0,16.412
+1,159,1.0,0.981,0.013,0.743,0.025,0.742,0.741,0.003,0.742,13.528,83.094
+2,443,1.0,0.98,0.012,0.023,0.026,0.048,0.723,0.958,93.569,2.824,218.194

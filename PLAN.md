@@ -1,21 +1,18 @@
 # PLAN: undeciphered-scripts
 
-Roboczy plan działania (repozytorium prywatne).
+Roboczy plan działania.
 Zasada: **jeden krok naraz**. Po każdym kroku krótki raport i aktualizacja tego pliku. Następny krok zaczynam dopiero po Twoim „ok”.
 
 ---
 
 ## Stan na teraz
 
-### Na GitHubie (`main`, commit `576c8f7`)
-- README projektu, LICENSE, `scripts/fetch_okr.sh`
+### Na GitHubie (`main`)
+- README projektu, LICENSE, `scripts/fetch_okr.sh`, `scripts/fetch_lexicons.sh`
 - Study 01 (Khipu-ML): kod, wyniki, wykres. **Zakończone.**
+- uv (`pyproject.toml`, `uv.lock`), `AGENTS.md`, ruff, ten plan
 
 ### Lokalnie, jeszcze bez commita
-- Przejście na **uv**: `pyproject.toml`, `uv.lock`, `.python-version`, usunięty `requirements.txt`
-- `AGENTS.md` oraz `CLAUDE.md` jako symlink do niego
-- Konfiguracja ruff, poprawki lintera w Study 01 (kosmetyczne)
-- `scripts/fetch_lexicons.sh`: słowniki keczua i suahili, przypięte wersje
 - Study 02: skrypt `null_test.py` (**niedokończony**, patrz krok 2)
 
 ### Zablokowane: wymaga Ciebie
@@ -30,9 +27,9 @@ Proxy nie pozwala mi zmieniać ustawień repozytorium. Do zrobienia w GitHub →
 
 ## Kroki
 
-### Krok 1: commit „uv + AGENTS.md + lint”
-- [ ] Uruchomić Study 01 przez `uv run` i sprawdzić, że `results/` się nie zmieniły (`git status`).
-- [ ] Commit i push na `main`.
+### Krok 1: commit „uv + AGENTS.md + lint” ✅
+- [x] Study 01 przez `uv run`: `results/` bez zmian.
+- [x] Commit i push na `main`.
 
 ### Krok 2: Study 02, test zerowy dla ALBA
 Problem: pierwsze uruchomienie zostało przerwane po 10 minutach. Pełna przestrzeń (6,2 mln mapowań × 4 modele zerowe × 40 losowań, plus ocena na khipu spoza kalibracji) jest za wolna.
@@ -55,4 +52,5 @@ Problem: pierwsze uruchomienie zostało przerwane po 10 minutach. Pełna przestr
 ---
 
 ## Dziennik
+- 2026-10-01: krok 1 zrobiony (uv, AGENTS.md, push). Repo publiczne: jutro publikacja wątku o Study 01.
 - 2026-10-01: repozytorium utworzone, Study 01 wypchnięte. Przejście na uv i AGENTS.md lokalnie. Study 02 przerwane (timeout).

@@ -88,6 +88,20 @@ A larger search space finds *more* "words" for every lexicon: Swahili rises from
 
 Either way, the lexical nulls show this structure is equally "readable" as fake Quechua, random syllables or Swahili.
 
+### Reading direction control (`--reverse`, space `Ca_syllables`, 200 draws)
+
+Knots are read from the primary cord downwards by default. In 99.8% of OKR cords with two or more knot clusters, the cluster ordinal increases away from the primary cord, which is the direction in which khipu numbers are read. Reading every cord **bottom-to-top** instead should break a genuine syllabic channel.
+
+| Calibration data | Top-down (default) | **Bottom-up (reversed)** |
+|---|---|---|
+| Real Quechua + real UR039 | 44 (best mapping L3 = cha, L4 = qa, L5 = ya, L6 = pa) | **43** (best mapping L3 = pa, L4 = ya, L5 = qa, L6 = cha) |
+| Fake Quechua | 43.5 (p = 0.61) | 43.4 (p = 0.81) |
+| Random syllable lexicon | 42.4 (p = 0.56) | 42.4 (p = 0.62) |
+| Swahili (length-matched) | 37.9 (p = 0.13) | 38.0 (p = 0.20) |
+| Shuffled khipu | 41.9 (p = 0.15) | 41.9 (p = 0.33) |
+
+Read backwards, the search finds just as many "Quechua words". It uses the same four syllables, assigned to the knot types in mirror order, and the held-out percentile is again 1.0. A calibration that is indifferent to reading direction cannot be evidence of a phonetic reading.
+
 ## Why this happens
 
 UR039's 64 string cords collapse into **19 short patterns** of 2–3 knots, dominated by L4 and L5 (e.g. `L5 L4` × 14, `L4 L4` × 10, `L5 L5` × 9). Choosing four syllables to make a handful of two-syllable patterns into words is easy in any lexicon rich in CV-CV words.
@@ -118,6 +132,7 @@ uv sync
 ./scripts/fetch_okr.sh && ./scripts/fetch_lexicons.sh
 uv run python studies/khipu/02-alba-syllabary-null-test/null_test.py --space Ca_syllables --draws 200      # ~2 min
 uv run python studies/khipu/02-alba-syllabary-null-test/null_test.py --space all_CV_syllables --draws 40   # ~30 min
+uv run python studies/khipu/02-alba-syllabary-null-test/null_test.py --space Ca_syllables --draws 200 --reverse  # ~2 min
 ```
 
-Outputs are written to `results/`: `summary_<space>.json`, `null_draws_<space>.csv` and `null_distributions_<space>.png`.
+Outputs are written to `results/`: `summary_<space>[_reversed].json`, `null_draws_<space>[_reversed].csv` and `null_distributions_<space>[_reversed].png`.

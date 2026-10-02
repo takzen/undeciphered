@@ -214,7 +214,13 @@ summary = {
 ap = argparse.ArgumentParser()
 ap.add_argument("--space", choices=list(SPACES), default="Ca_syllables")
 ap.add_argument("--draws", type=int, default=200, help="null draws per null model")
+ap.add_argument("--reverse", action="store_true",
+                help="read knots bottom-to-top instead of from the primary cord down (reading-direction control)")
 args = ap.parse_args()
+TAG = args.space + ("_reversed" if args.reverse else "")
+if args.reverse:
+    calib = [s[::-1] for s in calib]
+    held = [s[::-1] for s in held]
 
 real_tables = lex_tables(quechua)
 rows = []
@@ -275,8 +281,9 @@ for space, cand in [(args.space, SPACES[args.space])]:
     print(space, json.dumps(summary["spaces"][space], indent=1, ensure_ascii=False))
 
 summary["null_draws_per_model"] = args.draws
-pd.DataFrame(rows).to_csv(OUT / f"null_draws_{args.space}.csv", index=False)
-(OUT / f"summary_{args.space}.json").write_text(json.dumps(summary, indent=2, ensure_ascii=False))
+summary["reading_direction"] = "bottom-to-top (reversed)" if args.reverse else "primary cord downwards"
+pd.DataFrame(rows).to_csv(OUT / f"null_draws_{TAG}.csv", index=False)
+(OUT / f"summary_{TAG}.json").write_text(json.dumps(summary, indent=2, ensure_ascii=False))
 
 import matplotlib  # noqa: E402
 
@@ -305,4 +312,4 @@ ax[1].set_xlabel("held-out percentile of the calibrated mapping (other khipus)")
 ax[1].set_title("'Generalisation' to held-out khipus")
 ax[1].legend(fontsize=8)
 fig.tight_layout()
-fig.savefig(OUT / f"null_distributions_{sp}.png", dpi=150)
+fig.savefig(OUT / f"null_distributions_{TAG}.png", dpi=150)

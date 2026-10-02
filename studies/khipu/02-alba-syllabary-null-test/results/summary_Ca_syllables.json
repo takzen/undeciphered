@@ -1,0 +1,91 @@
+{
+  "okr_commit": "4039ca51f4de661d80d0160596309c983a62a9c7",
+  "quechua_lexicon_size": 434,
+  "quechua_raw_single_word_entries": 2417,
+  "swahili_pool_size": 15857,
+  "calibration_khipu": "UR039 (OKR KH0271)",
+  "calibration_string_cords": 64,
+  "calibration_distinct_patterns": 19,
+  "held_out_string_cords_L3_to_L6": 632,
+  "held_out_khipus": 78,
+  "spaces": {
+    "Ca_syllables": {
+      "real_quechua": {
+        "n_mappings": 43680,
+        "held_out_reference_mappings": 43680,
+        "best_mapping": {
+          "L3": "cha",
+          "L4": "qa",
+          "L5": "ya",
+          "L6": "pa"
+        },
+        "best_cord_hits": 44,
+        "best_distinct_words": 7,
+        "best_held_out_hits": 288,
+        "best_held_out_percentile": 1.0,
+        "alba_mapping_cord_hits": 16,
+        "alba_mapping_distinct_words": 2,
+        "alba_mapping_rank": 12537,
+        "alba_held_out_hits": 101,
+        "alba_held_out_percentile": 0.6038,
+        "alba_words_found": [
+          "pata",
+          "taka"
+        ]
+      },
+      "nulls": {
+        "scrambled_quechua": {
+          "draws": 200,
+          "best_cord_hits_mean": 43.47,
+          "best_cord_hits_range": [
+            41,
+            47
+          ],
+          "p_value_cord_hits_ge_real": 0.6119,
+          "best_distinct_words_mean": 7.05,
+          "p_value_distinct_words_ge_real": 0.9254,
+          "held_out_percentile_median": 0.9984,
+          "share_with_held_out_percentile_ge_0.95": 1.0
+        },
+        "random_syllable_lexicon": {
+          "draws": 200,
+          "best_cord_hits_mean": 42.38,
+          "best_cord_hits_range": [
+            25,
+            51
+          ],
+          "p_value_cord_hits_ge_real": 0.5572,
+          "best_distinct_words_mean": 7.63,
+          "p_value_distinct_words_ge_real": 0.8607,
+          "held_out_percentile_median": 0.9996,
+          "share_with_held_out_percentile_ge_0.95": 1.0
+        },
+        "swahili": {
+          "draws": 200,
+          "best_cord_hits_mean": 37.88,
+          "best_cord_hits_range": [
+            23,
+            50
+          ],
+          "p_value_cord_hits_ge_real": 0.1343,
+          "best_distinct_words_mean": 5.99,
+          "p_value_distinct_words_ge_real": 0.2786,
+          "held_out_percentile_median": 0.9996,
+          "share_with_held_out_percentile_ge_0.95": 1.0
+        },
+        "shuffled_khipu": {
+          "draws": 200,
+          "best_cord_hits_mean": 41.85,
+          "best_cord_hits_range": [
+            37,
+            46
+          ],
+          "p_value_cord_hits_ge_real": 0.1542,
+          "best_distinct_words_mean": 7.5,
+          "p_value_distinct_words_ge_real": 0.9552
+        }
+      }
+    }
+  },
+  "null_draws_per_model": 200
+}

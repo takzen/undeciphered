@@ -17,7 +17,7 @@ The long-term aim is constructive: a set of clean, documented baselines and null
 | # | Script | Claim tested | Verdict |
 |---|---|---|---|
 | [01](studies/khipu/01-khipu-ml-transcription-confound/) | Khipu (Inca) | ML clusters and an "Inka imperial style" classifier (F1 = 0.86) found from structure | **Not supported.** Clusters are transcription regimes; "imperial" = one museum's incomplete records |
-| 02 | Khipu (Inca) | ALBA / KhipuReader: syllabic reading of long knots as Quechua | *planned:* null test with a scrambled lexicon and shuffled khipus |
+| [02](studies/khipu/02-alba-syllabary-null-test/) | Khipu (Inca) | ALBA / KhipuReader: calibrating a knot→syllable mapping finds Quechua words that generalise to other khipus | **Not diagnostic.** Fake Quechua, random syllables, Swahili and shuffled khipus score the same |
 | 03 | Khipu (Inca) | Colour semantics learned by a BERT model (Clindaniel) | *planned:* replication |
 
 ## Roadmap: the scripts
@@ -56,8 +56,9 @@ Requires [uv](https://docs.astral.sh/uv/).
 
 ```bash
 uv sync
-./scripts/fetch_okr.sh
+./scripts/fetch_okr.sh && ./scripts/fetch_lexicons.sh
 uv run python studies/khipu/01-khipu-ml-transcription-confound/replicate.py
+uv run python studies/khipu/02-alba-syllabary-null-test/null_test.py --space Ca_syllables --draws 200
 ```
 
 Contributor and AI-agent conventions are in [AGENTS.md](AGENTS.md).

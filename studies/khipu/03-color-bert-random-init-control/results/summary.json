@@ -1,0 +1,113 @@
+{
+  "checkpoint_reproduces_published_embeddings": {
+    "M3": {
+      "tokens": 90,
+      "median_cosine_published_vs_checkpoint": 0.006,
+      "published_within_colour_median": 0.749,
+      "checkpoint_within_colour_median": 0.764
+    },
+    "Y2": {
+      "tokens": 10,
+      "median_cosine_published_vs_checkpoint": 0.062,
+      "published_within_colour_median": 0.849,
+      "checkpoint_within_colour_median": 0.89
+    },
+    "R2": {
+      "tokens": 20,
+      "median_cosine_published_vs_checkpoint": 0.016,
+      "published_within_colour_median": 0.862,
+      "checkpoint_within_colour_median": 0.866
+    },
+    "L4": {
+      "tokens": 31,
+      "median_cosine_published_vs_checkpoint": 0.008,
+      "published_within_colour_median": 0.835,
+      "checkpoint_within_colour_median": 0.83
+    }
+  },
+  "n_colour_tokens": 48636,
+  "colour_counts": {
+    "A1": 16245,
+    "B3": 11529,
+    "B2": 10857,
+    "B4": 4989,
+    "G3": 1150,
+    "Z5": 750,
+    "G4": 544,
+    "H3": 538,
+    "L3": 343,
+    "M2": 258,
+    "R3": 254,
+    "H4": 222,
+    "H2": 207,
+    "L2": 186,
+    "Y3": 132,
+    "M4": 119,
+    "M3": 90,
+    "N3": 43,
+    "N4": 43,
+    "G2": 41,
+    "R4": 35,
+    "L4": 31,
+    "R2": 20,
+    "Y2": 10
+  },
+  "trained": {
+    "clusters": 23,
+    "share_tokens_clustered": 0.774,
+    "nmi_colour_vs_cluster_on_clustered": 0.838,
+    "cluster_purity_majority_colour": 0.979,
+    "colours_owning_at_least_one_cluster": [
+      "A1",
+      "B2",
+      "B3",
+      "B4",
+      "G3",
+      "G4",
+      "H3",
+      "L3",
+      "M2",
+      "Z5"
+    ],
+    "within_colour_cosine_median_range": [
+      0.751,
+      0.934
+    ],
+    "colours_with_median_within_cosine_ge_0.5": 24,
+    "between_colour_cosine_range": [
+      0.017,
+      0.916
+    ]
+  },
+  "random": {
+    "clusters": 60,
+    "share_tokens_clustered": 0.825,
+    "nmi_colour_vs_cluster_on_clustered": 0.542,
+    "cluster_purity_majority_colour": 0.941,
+    "colours_owning_at_least_one_cluster": [
+      "A1",
+      "B2",
+      "B3",
+      "B4",
+      "G3",
+      "H2",
+      "H3",
+      "L3",
+      "Z5"
+    ],
+    "within_colour_cosine_median_range": [
+      0.731,
+      0.792
+    ],
+    "colours_with_median_within_cosine_ge_0.5": 24,
+    "between_colour_cosine_range": [
+      0.65,
+      0.787
+    ]
+  },
+  "between_colour_matrix_spearman_trained_vs_random": 0.119,
+  "between_colour_cosine_spearman_with_log_frequency": {
+    "trained": -0.849,
+    "random": 0.024
+  }
+}

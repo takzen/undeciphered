@@ -18,7 +18,7 @@ The long-term aim is constructive: a set of clean, documented baselines and null
 |---|---|---|---|
 | [01](studies/khipu/01-khipu-ml-transcription-confound/) | Khipu (Inca) | ML clusters and an "Inka imperial style" classifier (F1 = 0.86) found from structure | **Not supported.** Clusters are transcription regimes; "imperial" = one museum's incomplete records |
 | [02](studies/khipu/02-alba-syllabary-null-test/) | Khipu (Inca) | ALBA / KhipuReader: calibrating a knot→syllable mapping finds Quechua words that generalise to other khipus | **Not diagnostic.** Fake Quechua, random syllables, Swahili and shuffled khipus score the same |
-| 03 | Khipu (Inca) | Colour semantics learned by a BERT model (Clindaniel) | *planned:* replication |
+| [03](studies/khipu/03-color-bert-random-init-control/) | Khipu (Inca) | A BERT model learns colour "semantic domains", polysemy and three colour sets (Clindaniel) | **Largely not supported.** Clusters and "polysemy" appear with random weights; the sets are frequency tiers. Released checkpoint does not reproduce released embeddings |
 
 ## Roadmap: the scripts
 
@@ -60,6 +60,8 @@ uv sync
 uv run python studies/khipu/01-khipu-ml-transcription-confound/replicate.py
 uv run python studies/khipu/02-alba-syllabary-null-test/null_test.py --space Ca_syllables --draws 200
 ```
+
+Study 03 needs the optional BERT dependencies: `uv sync --group bert`, then see its README.
 
 Contributor and AI-agent conventions are in [AGENTS.md](AGENTS.md).
 

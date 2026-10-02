@@ -17,6 +17,11 @@ dependencies = [
 ]
 
 [dependency-groups]
+bert = [
+    "pyarrow>=25.0.1",
+    "torch>=2.14.1",
+    "transformers>=5.18.0",
+]
 dev = ["ruff>=0.6"]
 
 [tool.uv]
@@ -30,3 +35,7 @@ target-version = "py311"
 select = ["E", "F", "W", "I", "B", "UP"]
 # analysis scripts import heavy libraries late, define tiny lambdas, and compact plotting lines
 ignore = ["E402", "E731", "E702"]
+
+[tool.ruff.lint.per-file-ignores]
+# SQL copied verbatim from the original notebook
+"studies/khipu/03-color-bert-random-init-control/embed.py" = ["E501"]

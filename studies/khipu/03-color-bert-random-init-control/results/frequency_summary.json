@@ -1,0 +1,42 @@
+{
+  "paper_sets_vs_frequency_tiers": {
+    "agreement": 0.833,
+    "adjusted_rand": 0.647,
+    "disagreements": {
+      "B4": {
+        "paper": "extension",
+        "frequency_tier": "foundational",
+        "count": 4989
+      },
+      "Z5": {
+        "paper": "foundational",
+        "frequency_tier": "extension",
+        "count": 750
+      },
+      "L3": {
+        "paper": "refinement",
+        "frequency_tier": "extension",
+        "count": 343
+      },
+      "M2": {
+        "paper": "extension",
+        "frequency_tier": "refinement",
+        "count": 258
+      }
+    }
+  },
+  "trained": {
+    "r2_cosine_from_frequency_only": 0.79,
+    "matrix_groups_vs_paper_sets_adjusted_rand": 0.197,
+    "matrix_groups_vs_frequency_tiers_adjusted_rand": 0.197,
+    "mean_cosine_within_refinement_set": 0.826,
+    "mean_cosine_within_non_refinement": 0.328
+  },
+  "random": {
+    "r2_cosine_from_frequency_only": 0.004,
+    "matrix_groups_vs_paper_sets_adjusted_rand": 0.143,
+    "matrix_groups_vs_frequency_tiers_adjusted_rand": 0.102,
+    "mean_cosine_within_refinement_set": 0.725,
+    "mean_cosine_within_non_refinement": 0.73
+  }
+}

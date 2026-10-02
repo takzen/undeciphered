@@ -14,8 +14,10 @@ The environment is managed with **uv**. Never use `pip install` or a bare `pytho
 
 ```bash
 uv sync                                   # create .venv from uv.lock
+uv sync --group bert                      # + torch/transformers, only for the BERT studies
 ./scripts/fetch_okr.sh                    # Open Khipu Repository DB, pinned commit -> data/okr/
 ./scripts/fetch_lexicons.sh               # Quechua + Swahili word lists, pinned -> data/lexicons/
+./scripts/fetch_clindaniel.sh             # colour-BERT code/checkpoint + OKR v2.0.0 (study 03)
 uv run python studies/<script>/<NN-slug>/<entry>.py
 uv run ruff check .                       # lint
 ```

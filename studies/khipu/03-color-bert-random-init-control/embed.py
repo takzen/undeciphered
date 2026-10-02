@@ -9,6 +9,7 @@ last four hidden layers (3,072 dims). The SQL query below is copied from that no
 
   --model trained   the published checkpoint (checkpoint-400)
   --model random    identical BertConfig, freshly initialised weights (seeded), no training
+  --model retrained --checkpoint DIR   a model trained by retrain.py (study 03c)
 
 Run:  ./scripts/fetch_clindaniel.sh
       uv run --group bert python studies/khipu/03-color-bert-random-init-control/embed.py --model trained
@@ -80,7 +81,8 @@ def cord_groups():
 
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("--model", choices=["trained", "random"], required=True)
+    ap.add_argument("--model", choices=["trained", "random", "retrained"], required=True)
+    ap.add_argument("--checkpoint", help="for --model retrained: model directory written by retrain.py")
     ap.add_argument("--seed", type=int, default=0, help="initialisation seed for --model random")
     args = ap.parse_args()
     torch.set_num_threads(4)
@@ -92,6 +94,9 @@ def main():
     if args.model == "trained":
         model = BertForMaskedLM.from_pretrained(MODEL_PATH / "checkpoint-400")
         tag = "trained"
+    elif args.model == "retrained":
+        model = BertForMaskedLM.from_pretrained(args.checkpoint)
+        tag = Path(args.checkpoint).name
     else:
         torch.manual_seed(args.seed)
         model = BertForMaskedLM(BertConfig.from_pretrained(MODEL_PATH / "checkpoint-400"))

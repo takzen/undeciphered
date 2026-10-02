@@ -18,7 +18,7 @@ The long-term aim is constructive: a set of clean, documented baselines and null
 |---|---|---|---|
 | [01](studies/khipu/01-khipu-ml-transcription-confound/) | Khipu (Inca) | ML clusters and an "Inka imperial style" classifier (F1 = 0.86) found from structure | **Not supported.** Clusters are transcription regimes; "imperial" = one museum's incomplete records |
 | [02](studies/khipu/02-alba-syllabary-null-test/) | Khipu (Inca) | ALBA / KhipuReader: calibrating a knot→syllable mapping finds Quechua words that generalise to other khipus | **Not diagnostic.** Fake Quechua, random syllables, Swahili and shuffled khipus score the same |
-| [03](studies/khipu/03-color-bert-random-init-control/) | Khipu (Inca) | A BERT model learns colour "semantic domains", polysemy and three colour sets (Clindaniel) | **Largely not supported.** Clusters and "polysemy" appear with random weights; the sets are frequency tiers. Released checkpoint does not reproduce released embeddings |
+| [03](studies/khipu/03-color-bert-random-init-control/) | Khipu (Inca) | A BERT model learns colour "semantic domains", polysemy and three colour sets (Clindaniel) | **Largely not supported.** Clusters and "polysemy" appear with random weights; the sets are frequency tiers; a model trained on shuffled colours reproduces the similarity structure (ρ = 0.85). Released checkpoint does not reproduce released embeddings |
 
 ## Roadmap: the scripts
 

@@ -11,6 +11,7 @@ DEST="$ROOT/data/clindaniel"
 LFS_FILES=(
   "pretrained-bert/checkpoint-400/pytorch_model.bin"   # trained model weights (438 MB)
   # published embeddings for small colours, used to check that the checkpoint reproduces them
+  "data/train/data-00000-of-00001.arrow"                 # MLM training chunks (used to retrain, study 03c)
   "data/test/data-00000-of-00001.arrow"                  # held-out MLM data: checks the checkpoint reaches its logged eval loss
   "data/token_embeddings_M3/data-00000-of-00001.arrow"
   "data/token_embeddings_Y2/data-00000-of-00001.arrow"

@@ -1,0 +1,84 @@
+{
+  "models": {
+    "trained": {
+      "clusters": 23,
+      "share_tokens_clustered": 0.774,
+      "cluster_purity": 0.979,
+      "colours_owning_a_cluster": 10,
+      "within_colour_median_range": [
+        0.751,
+        0.934
+      ],
+      "colours_passing_0.5_monosemy_threshold": 24,
+      "between_colour_cosine_range": [
+        0.017,
+        0.916
+      ],
+      "r2_between_colour_from_frequency": 0.79,
+      "mean_cosine_within_refinement_set": 0.826,
+      "mean_cosine_among_other_colours": 0.328
+    },
+    "random_seed0": {
+      "clusters": 60,
+      "share_tokens_clustered": 0.825,
+      "cluster_purity": 0.941,
+      "colours_owning_a_cluster": 9,
+      "within_colour_median_range": [
+        0.731,
+        0.792
+      ],
+      "colours_passing_0.5_monosemy_threshold": 24,
+      "between_colour_cosine_range": [
+        0.65,
+        0.787
+      ],
+      "r2_between_colour_from_frequency": 0.004,
+      "mean_cosine_within_refinement_set": 0.725,
+      "mean_cosine_among_other_colours": 0.73
+    },
+    "retrained_original_seed0": {
+      "clusters": 27,
+      "share_tokens_clustered": 0.695,
+      "cluster_purity": 0.98,
+      "colours_owning_a_cluster": 11,
+      "within_colour_median_range": [
+        0.697,
+        0.952
+      ],
+      "colours_passing_0.5_monosemy_threshold": 24,
+      "between_colour_cosine_range": [
+        0.026,
+        0.904
+      ],
+      "r2_between_colour_from_frequency": 0.752,
+      "mean_cosine_within_refinement_set": 0.784,
+      "mean_cosine_among_other_colours": 0.362
+    },
+    "retrained_shuffled_seed0": {
+      "clusters": 58,
+      "share_tokens_clustered": 0.734,
+      "cluster_purity": 0.972,
+      "colours_owning_a_cluster": 12,
+      "within_colour_median_range": [
+        0.77,
+        0.936
+      ],
+      "colours_passing_0.5_monosemy_threshold": 24,
+      "between_colour_cosine_range": [
+        0.213,
+        0.891
+      ],
+      "r2_between_colour_from_frequency": 0.772,
+      "mean_cosine_within_refinement_set": 0.76,
+      "mean_cosine_among_other_colours": 0.414
+    }
+  },
+  "between_colour_matrix_spearman": {
+    "trained vs random_seed0": 0.119,
+    "trained vs retrained_original_seed0": 0.94,
+    "trained vs retrained_shuffled_seed0": 0.85,
+    "random_seed0 vs retrained_original_seed0": 0.143,
+    "random_seed0 vs retrained_shuffled_seed0": 0.021,
+    "retrained_original_seed0 vs retrained_shuffled_seed0": 0.858
+  }
+}

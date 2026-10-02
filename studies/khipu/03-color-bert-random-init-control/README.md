@@ -1,6 +1,6 @@
 # Study 03: Does the khipu colour BERT learn colour meaning, or colour identity and frequency?
 
-**Status:** complete (tests 3a and 3b; retraining on shuffled data not run) · **Verdict:** the headline structure is **largely reproduced without training** or **explained by colour frequency**. Separately, the published checkpoint does **not** reproduce the published embeddings.
+**Status:** complete · **Verdict:** the headline structure is **largely reproduced without training**, **explained by colour frequency**, and **reproduced by a model trained on shuffled colours** with no real co-occurrence. Separately, the published checkpoint does **not** reproduce the published embeddings.
 
 ## The claim under test
 
@@ -81,17 +81,38 @@ High cosine similarity is a property of transformer embedding spaces (anisotropy
 
 The model was trained for only 400 steps of 4 sequences (about 24 passes over 68 training chunks). In that regime, rare tokens receive little training signal, which plausibly explains why they end up with similar representations. The paper reads this as a specialised semantic domain.
 
+### 4. Retraining on shuffled colours reproduces most of it (study 03c)
+
+The model was retrained twice with the paper's recipe (400 steps × 4 sequences, learning rate 5e-5, MLM 0.15, Hugging Face Trainer defaults):
+- **(a) original:** on the original training chunks, with a new seed;
+- **(b) shuffled:** on chunks whose colour tokens were **permuted across the whole corpus**. Every colour keeps its frequency, and every chunk keeps its length, special tokens and combination operators, but which colours appear together in a cord group is destroyed.
+
+| | Published checkpoint | Retrained, original data | **Retrained, shuffled colours** | Random weights |
+|---|---|---|---|---|
+| Test MLM loss (frequency-only baseline: 2.12) | 1.96 | 1.961 | **1.965** | ~10 |
+| Clusters / share of tokens clustered | 23 / 77% | 27 / 70% | **58 / 73%** | 60 / 83% |
+| Cluster purity / colours owning a cluster | 0.98 / 10 | 0.98 / 11 | **0.97 / 12** | 0.94 / 9 |
+| Colours above the 0.5 monosemy threshold | 24 / 24 | 24 / 24 | **24 / 24** | 24 / 24 |
+| R² of the between-colour matrix from frequency | 0.79 | 0.75 | **0.77** | 0.004 |
+| Refinement set mean cosine vs other colours | 0.83 vs 0.33 | 0.78 vs 0.36 | **0.76 vs 0.41** | 0.73 vs 0.73 |
+| Spearman of between-colour matrix with the published checkpoint | — | 0.94 | **0.85** | 0.12 |
+
+**What this shows:**
+- **Masked-colour prediction does not depend on context.** A model that never saw a real cord group predicts masked colours as well as the published one (1.965 vs 1.96). Both are only about 0.2 nats better than predicting from colour frequency alone (2.12).
+- **The colour-similarity structure the paper interprets mostly survives shuffling.** The between-colour matrix of the shuffled model correlates **0.85** with the published model's, against 0.94 for an honest retrain. The three sets, the tight "refinement" cluster, per-colour clusters and above-threshold self-similarity all reappear.
+- **The real co-occurrence signal is small.** At most, it is the gap between 0.94 and 0.85, plus the slightly lower loss on real sequences.
+
 ## Conclusion
 
 - **The paper's distinctions are mostly not evidence of colour semantics.**
   - Separate per-colour clusters, several clusters per colour, and above-threshold within-colour similarity all appear in an **untrained** network.
   - The three colour sets are, to within two neighbour swaps, **frequency tiers**.
   - The tight similarity of rare colours is what an under-trained model does with rare tokens.
-- **What training does add** is a between-colour similarity structure that differs from random (Spearman 0.12 between the trained and random matrices). Most of that structure (R² 0.79) is predicted by frequency.
+- **What training adds** is a between-colour similarity structure that differs from random (Spearman 0.12). However, most of it is predicted by frequency (R² 0.79), and a model trained on **colour-shuffled** sequences reproduces it (Spearman 0.85 with the published model). Whatever the khipu-makers' actual colour co-occurrence encodes, this analysis barely measures it.
 - **Not tested:**
   - the cord-group "phrase" clusters (127) and khipu-level "topic" clusters (20);
   - Ascher-code sub-cluster analyses;
-  - **retraining on shuffled colour sequences** (planned 3c). This would show whether *any* learned similarity survives once co-occurrence structure is destroyed, and needs several CPU hours per run.
+  - more than one seed per retraining condition.
 - **What a stronger claim would need:**
   - a random-weight and a shuffled-data baseline for every reported statistic;
   - frequency-matched comparisons;
@@ -106,11 +127,19 @@ uv run --group bert python studies/khipu/03-color-bert-random-init-control/embed
 uv run --group bert python studies/khipu/03-color-bert-random-init-control/embed.py --model random --seed 0
 uv run --group bert python studies/khipu/03-color-bert-random-init-control/analyze.py                 # ~20 min
 uv run --group bert python studies/khipu/03-color-bert-random-init-control/frequency_test.py
+# 03c: retrain (~50 min each on 4 CPU cores), embed, compare all models (~40 min)
+uv run --group bert python studies/khipu/03-color-bert-random-init-control/retrain.py --data shuffled --seed 0
+uv run --group bert python studies/khipu/03-color-bert-random-init-control/retrain.py --data original --seed 0
+for m in retrained_shuffled_seed0 retrained_original_seed0; do
+  uv run --group bert python studies/khipu/03-color-bert-random-init-control/embed.py --model retrained --checkpoint data/derived/study03/models/$m
+done
+uv run --group bert python studies/khipu/03-color-bert-random-init-control/compare.py trained random_seed0 retrained_original_seed0 retrained_shuffled_seed0
 ```
 
-Embeddings (about 1.2 GB) are written to `data/derived/study03/` and not committed. Committed outputs are in `results/`:
+Embeddings (about 0.6 GB per model) and retrained models are written to `data/derived/study03/` and not committed. Committed outputs are in `results/`:
 - `summary.json`
 - `frequency_summary.json`
+- `model_comparison.json`
 - `within_colour_cosine.csv`
 - `between_colour_cosine_{trained,random}.csv`
 - the figure

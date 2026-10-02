@@ -4,3 +4,7 @@ __pycache__/
 .venv/
 .ipynb_checkpoints/
 data/lexicons/
+data/clindaniel/
+data/okr-v2.0.0/
+data/derived/
+PLAN.md
